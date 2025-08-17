@@ -1,0 +1,314 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  }
+  
+  .fade-in-down {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  }
+  
+  .fade-in-up-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-in-down-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+   */
+   .fade-in {
+    opacity: 0;
+    transform: translateX(-20px); /* Adjust based on effect */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  
+  .fade-in-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+  
+
+  /* @font-face {
+    font-family: 'K2D';
+    src: url('../components/Fonts/K2D/K2D-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+   */
+
+  .font-regular {
+    /* font-family: 'K2D'; */
+    font-weight: normal;
+  }
+  
+  /* Class for Bold font */
+  .font-bold {
+    /* font-family: 'K2D'; */
+    font-weight: bold;
+  }
+
+  .triangle-background {
+    position: relative;
+    background: #F0F8FF;
+    overflow: hidden;
+  }
+  
+  /* Left triangle */
+  .triangle-background::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 1000px solid #1e3b8a4f; /* blue triangle */
+
+    border-top: 300px solid transparent;
+    z-index: 0;
+  }
+  
+  .shadow-subtle {
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+  /* Right triangle */
+  .triangle-background::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-right: 800px solid #647bba7a; /* blue triangle */
+    border-top: 800px solid transparent;
+    z-index: 0;
+  }
+  
+  /* From Uiverse.io by Nawsome */ 
+.svg-frame {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg-frame svg {
+  position: absolute;
+  transition: .5s;
+  z-index: calc(1 - (0.2 * var(--j)));
+  transform-origin: center;
+  width: 344px;
+  height: 344px;
+  fill: none;
+}
+
+.svg-frame:hover svg {
+  transform: rotate(-80deg) skew(30deg) translateX(calc(45px * var(--i))) translateY(calc(-35px * var(--i)));
+}
+
+.svg-frame svg #center {
+  transition: .5s;
+  transform-origin: center;
+}
+
+.svg-frame:hover svg #center {
+  transform: rotate(-30deg) translateX(45px) translateY(-3px);
+}
+
+#out2 {
+  animation: rotate16 7s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+#out3 {
+  animation: rotate16 3s ease-in-out infinite alternate;
+  transform-origin: center;
+  stroke: rgb(88, 174, 254);
+}
+
+#inner3,
+#inner1 {
+  animation: rotate16 4s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+#center1 {
+  fill: rgb(88, 174, 254);
+  animation: rotate16 2s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes rotate16 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.rotating-border {
+  --border-radius: 1rem;
+  --border-size: 0.1rem;
+  --border-bg: conic-gradient(from 0deg, white, white, #dbeafe, white ,white,#dbeafe, white, white);
+  --padding: 1rem;
+
+  position: relative;
+  overflow: hidden;
+  padding: 0.1rem;
+  border-radius: var(--border-radius);
+  display: inline-block;
+  z-index: 0;
+}
+
+.rotating-border::before {
+  content: '';
+  display: block;
+  background: var(--border-bg);
+  width: 200%; /* ensure large enough to fully cover and rotate */
+  height: 200%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -2;
+  animation: spin 6s linear infinite;
+}
+
+.rotating-border::after {
+  content: '';
+  position: absolute;
+  top: var(--border-size);
+  bottom: var(--border-size);
+  left: var(--border-size);
+  right: var(--border-size);
+  background: white;
+  z-index: -1;
+  border-radius: calc(var(--border-radius) - var(--border-size));
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid transparent;
+  font-size: 16px;
+  background-color: #0273E6; /* fixed blue background */
+  border-radius: 100px;
+  font-weight: 600;
+  color: white; /* white text */
+  box-shadow: 0 0 0 2px #0273E6;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: white; /* white arrow */
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #0273E6;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #622BFF;
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
